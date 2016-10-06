@@ -1,0 +1,96 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="container">
+		<div class="row text-center">
+			<div class="col-xs-3">
+				<div class="nav navbar-nav">
+					<a href="#/superadmin" class="btn btn-default btn-sm">Home</a>
+				</div>
+			</div>
+			<div class="col-xs-6">
+				<div class="nav navbar-nav">
+					<span class='h3'>Recognition</span>
+				</div>
+			</div>
+			<div class="col-xs-3">
+				<div class="nav navbar-nav">
+					<button id='btStatus' ng-class="isBTIcon" data-toggle="modal" data-target="#btSettings">Bluetooth</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</nav>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="row">
+				<div class="col-xs-6 col-xs-offset-3">
+					<div id="recognition">
+						<input type="hidden" id="image_path"/>
+						<img class="img-responsive center-block" id="capture_image" src="images/human_icon.png" ng-click='captureImage()'/> <br>
+						<button class="btn btn-info center-block" id="start_recognition" ng-click='startRecognition()'>
+						Tap to recognise
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="recResult" class="hidden">
+		<div class="row">
+			<div class="col-xs-6">
+				<img id='probeImg' class="img-responsive center-block" src=""/>
+			</div>
+			<div class="col-xs-6">
+				<img id='resultImg' class="img-responsive center-block" src=""/>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 text-center">
+				<br>
+				<p class='lead text-info'>Found possible match</p>
+				<p><span class="text-danger">Name: </span>{{recEName}}</p>
+				<p><span class="text-danger">E-Code: </span>{{recECode}}</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<button class="center-block btn btn-info" ng-click="sendECode()">Employer code</button>
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-xs-6">
+				<button class="center-block btn btn-danger" ng-click="retake()">Attendance</button>
+			</div>
+			<div class="col-xs-6">
+				<button class="center-block btn btn-success" ng-click="nextEmployee()">Employee</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div ng-controller='bluetoothCtrl' id='btSettings' class="modal fade" tabindex="-1" role="dialog" aria-labelledby="btSettings">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">Blutooth Settings</h4>
+			</div>
+			<div class="modal-body">
+				<br>
+				<div class="input-group">
+					<select type="text" class="form-control" id="devices" ng-model="btDevice" ng-options="device.name for device in btDevicesList">
+					</select>
+					<span class="input-group-btn">
+						<button id="connectButton" class="btn btn-success" type="button" ng-click="connectToBT()">{{btConnectBtn}}</button>
+					</span>
+				</div>
+				<br>
+				<h4 class='text-danger'>Bluetooth connection status:</h4>
+				<p id="message" class="lead">{{btNotification}}</p>
+			</div>
+			<div class="modal-footer">
+				
+			</div>
+		</div>
+	</div>
+</div>

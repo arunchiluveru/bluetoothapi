@@ -1,0 +1,32 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="container">
+		<div class="row text-center">
+			<div class="col-xs-3">
+				<div class="nav navbar-nav">
+					<a href="#/superadmin" class="btn btn-default btn-sm">Home</a>
+				</div>
+			</div>
+			<div class="col-xs-6">
+				<div class="nav navbar-nav">
+					<span class='h3'>Gallery</span>
+				</div>
+			</div>
+			<div class="col-xs-3">
+				<div class="nav navbar-nav">
+					<button id='imgFlush' class="btn btn-danger btn-sm" ng-click="dataFlush()">Flush</button>
+				</div>
+			</div>
+			<div class="col-xs-3">
+			</div>
+		</div>
+	</div>
+</nav>
+<div class="container">
+	<div class="row">
+	<div class="col-xs-4" ng-repeat="imgs in ImageGallery">
+				<img id="{{imgs.EmpID}}" class="img-responsive center-block" ng-src="{{ imgs.imagePath }}" ng-click="imageClick($event)">
+				<p><strong Class="text-danger ims-{{imgs.EmpID}}">{{imgs.EmpID}}</strong></p>
+		</div>
+		<hr>
+	</div>
+</div>

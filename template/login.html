@@ -1,0 +1,30 @@
+<div class="container">
+	<div class="row loginContainer">
+		<div class="col-xs-6 col-xs-offset-3 text-center">
+			<div class="row">
+				<div class="col-xs-12">
+					<img class="img-responsive center-block" alt="image" src="images/logo.png" />
+				</div>
+			</div>
+			<h3 class="text-center">
+			Welcome to Face Identifier
+			</h3>
+			<div class="loginDiv">
+				<div ng-show="error" class="alert alert-danger">{{error}}</div>
+				<form name="userForm" novalidate class="loginForm " role="form" ng-submit="loginSubmit()">
+					<div class="form-group" ng-class="{ 'has-error' : userForm.userName.$invalid && !userForm.userName.$pristine }">
+						<input type="text" name="userName"  class="form-control" ng-model="user.userName" ng-minlength="3" ng-maxlength="10" placeholder="User Name" required>
+						<p ng-show="userForm.userName.$error.minlength" class="help-block">UserName is too short.</p>
+						<p ng-show="userForm.userName.$error.maxlength" class="help-block">UserName is too long.</p>
+					</div>
+					<div class="form-group" ng-class="{ 'has-error' : userForm.password.$invalid && !userForm.password.$pristine }">
+						<input type="password" name="password"  class="form-control" ng-model="user.password" ng-minlength="3" ng-maxlength="8" placeholder="Password" required>
+						<p ng-show="userForm.password.$error.minlength" class="help-block">Password is too short.</p>
+						<p ng-show="userForm.password.$error.maxlength" class="help-block">Password is too long.</p>
+					</div>
+					<button type="submit" class="btn btn-primary" ng-disabled="userForm.$invalid">Login</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
